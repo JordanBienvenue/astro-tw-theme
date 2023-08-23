@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import AdsCard from "../components/AdsCard.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <SectionTitle />
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Card />
+      <Card />
+      <AdsCard />
+    </div>
+  </div>
+</Layout>

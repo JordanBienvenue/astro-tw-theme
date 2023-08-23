@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+}
+import Header from "../components/Header.astro";
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
+</html>
+
+<style is:global lang="scss">
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151a;
+  }
+
+  :root {
+    --primary-color: #ff0080;
+    --secondary-color: #ff00f0;
+
+    --card-title__color: #fff;
+    --card-title__font-size: 1.5rem;
+  }
+
+  html[data-theme="theme1"] {
+    --primary-color: black;
+    --secondary-color: #ff0080;
+
+    --card-title__color: #ff0080;
+    --card-title__font-size: 1.5rem;
+  }
+</style>
+
+<script>
+  const dynamicTheme = () => {
+    const pathname = new URL(window.location.href).pathname.replace("/", "");
+
+    if (pathname) {
+      document.documentElement.setAttribute("data-theme", pathname);
+    } else {
+      document.documentElement.setAttribute("data-theme", "");
+    }
+  };
+  dynamicTheme();
+</script>
